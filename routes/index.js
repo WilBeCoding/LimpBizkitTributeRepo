@@ -11,7 +11,7 @@ router.get('/api/v1/memories', function(req, res, next) {
     }
     client.query('SELECT * from memories', function(err, result) {
       done();
-      res.json(result.rows)
+      res.json(result.rows, {msg: 'This is CORS-enabled for all origins!'})
       if (err) {
         return console.error('error running query', err);
       }
@@ -30,7 +30,7 @@ router.get('/api/v1/memories/years', function(req, res, next) {
       if (err) {
         return console.error('error running query', err);
       }
-      res.json(result.rows);
+      res.json(result.rows, {msg: 'This is CORS-enabled for all origins!'});
       console.log('connected to db')
     });
   });
@@ -43,7 +43,7 @@ router.get('/api/v1/memories/:year', function(req, res, next) {
     }
     client.query('SELECT * from memories WHERE year = ' + req.params.year, function(err, result) {
       done();
-      res.json(result.rows)
+      res.json(result.rows ,{msg: 'This is CORS-enabled for all origins!'})
       if (err) {
         return console.error('error running query', err);
       }
